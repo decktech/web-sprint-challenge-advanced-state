@@ -2,13 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../state/action-creators'
 
+
 export function Form(props) {
 
-  console.log(actionCreators.inputChange)
-
   const onChange = evt => {
-    actionCreators.inputChange(evt.target)
-    console.log(actionCreators.inputChange)
+    props.inputChange(evt.target)
   }
 
   const onSubmit = evt => {
@@ -32,5 +30,5 @@ const mapStateToProps = state => ({
   newFalseAnswer: state.form.newFalseAnswer,
 
 })
-console.log(actionCreators)
-export default connect(mapStateToProps, { actionCreators })(Form)
+
+export default connect(mapStateToProps, actionCreators)(Form)

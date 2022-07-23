@@ -47,9 +47,9 @@ function form(state = initialFormState, action) {
     case INPUT_CHANGE:
       return (console.log('something'),{
         ...state,
-        // newQuestion: action.payload.id === "newQuestion" ? action.payload.value : '',
-        // newTrueAnswer: action.payload.value,
-        newFalseAnswer: 'test',
+        newQuestion: action.payload.id === "newQuestion" ? action.payload.value : state.newQuestion,
+        newTrueAnswer: action.payload.id === "newTrueAnswer" ? action.payload.value : state.newTrueAnswer,
+        newFalseAnswer: action.payload.id === "newFalseAnswer" ? action.payload.value : state.newFalseAnswer,
       })
 
   }
