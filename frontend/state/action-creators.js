@@ -17,7 +17,13 @@ export function setMessage() { }
 
 export function setQuiz() { }
 
-export function inputChange() { }
+export function inputChange(input) {
+  console.log(input)
+  return {
+    type: "INPUT_CHANGE",
+    payload: input
+  }
+ }
 
 export function resetForm() {
   return {
