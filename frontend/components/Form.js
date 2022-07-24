@@ -1,16 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../state/action-creators'
+import axios from 'axios'
 
 
 export function Form(props) {
 
+  const { newQuestion, newTrueAnswer, newFalseAnswer } = props
+  console.log(props)
   const onChange = evt => {
     props.inputChange(evt.target)
   }
 
   const onSubmit = evt => {
-
+    evt.preventDefault()
+    props.postQuiz({newQuestion, newTrueAnswer, newFalseAnswer})
   }
 
   return (
