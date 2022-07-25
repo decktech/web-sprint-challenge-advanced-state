@@ -15,7 +15,7 @@ export function moveCounterClockwise() {
 
 export function selectAnswer(selected) {
   return {
-    type: SET_SELECTED_ANSWER,
+    type: "SET_SELECTED_ANSWER",
     payload: selected
   }
  }
@@ -53,7 +53,6 @@ export function fetchQuiz() {
     dispatch(setQuiz(null)),
     axios.get('http://localhost:9000/api/quiz/next')
       .then(res => {
-        console.log(res)
         dispatch (setQuiz(res.data))
       })
       .catch(err => {
@@ -66,7 +65,14 @@ export function fetchQuiz() {
 }
 export function postAnswer(quiz) {
   return function (dispatch) {
-    axios.post(`http://localhost:9000/api/quiz/answer`, { "quiz_id": quiz.currentQuiz, "answer_id": quiz.selected})
+    axios.post(`http://localhost:9000/api/quiz/answer`, { "quiz_id": quiz.currentQuiz.quiz_id, "answer_id": quiz.selected})
+      .then(res => {
+        dispatch (setMessage(res.data.message))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      // .finally(fetchQuiz())
     // On successful POST:
     // - Dispatch an action to reset the selected answer state
     // - Dispatch an action to set the server message to state

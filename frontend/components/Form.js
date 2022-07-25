@@ -4,7 +4,7 @@ import * as actionCreators from '../state/action-creators'
 import axios from 'axios'
 
 
-export function Form(props) {
+function Form(props) {
 
   const { newQuestion, newTrueAnswer, newFalseAnswer } = props
   console.log(props)
