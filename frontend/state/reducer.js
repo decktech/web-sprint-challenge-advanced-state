@@ -9,17 +9,13 @@ const initialWheelState = {
 function wheel(state = initialWheelState, action) {
   switch(action.type) {
     case MOVE_CLOCKWISE:
-      return ({
-        ...state,
-        wheelNum: state.wheelNum=== 5 ? state.wheelNum = 0 : state.wheelNum + 1
-      })
+      return (
+      (state.wheelNum === 5) ? {...state, wheelNum: 0} : {...state, wheelNum: state.wheelNum + 1})
     case MOVE_COUNTERCLOCKWISE:
-      return ({
-        ...state,
-        wheelNum: state.wheelNum=== 0 ? state.wheelNum = 5 : state.wheelNum - 1
-      })
+      return (
+      (state.wheelNum === 0) ? {...state, wheelNum: 5} : {...state, wheelNum: state.wheelNum - 1})
+    default: return state
   }
-  return state
 }
 
 const initialQuizState = {

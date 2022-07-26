@@ -56,7 +56,6 @@ const mapStateToProps = state => {
     selected: state.selectedAnswer.selected,
     currentQuiz: state.quiz.currentQuiz
   }
-  
 }
 
 export default connect(mapStateToProps, { fetchQuiz, setQuiz, postAnswer, selectAnswer })(Quiz)
