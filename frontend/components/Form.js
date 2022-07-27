@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../state/action-creators'
 import axios from 'axios'
-
+ 
 
 function Form(props) {
 
@@ -15,15 +15,17 @@ function Form(props) {
   const onSubmit = evt => {
     evt.preventDefault()
     props.postQuiz({newQuestion, newTrueAnswer, newFalseAnswer})
+    props.resetForm()
   }
 
   return (
     <form id="form" onSubmit={onSubmit}>
       <h2>Create New Quiz</h2>
-      <input maxLength={50} onChange={onChange} id="newQuestion" placeholder="Enter question" />
-      <input maxLength={50} onChange={onChange} id="newTrueAnswer" placeholder="Enter true answer" />
-      <input maxLength={50} onChange={onChange} id="newFalseAnswer" placeholder="Enter false answer" />
-      <button id="submitNewQuizBtn">Submit new quiz</button>
+      <input maxLength={50} onChange={onChange} value={newQuestion} id="newQuestion" placeholder="Enter question" />
+      <input maxLength={50} onChange={onChange} value={newTrueAnswer} id="newTrueAnswer" placeholder="Enter true answer" />
+      <input maxLength={50} onChange={onChange} value={newFalseAnswer} id="newFalseAnswer" placeholder="Enter false answer" />
+      {newQuestion <2 || newTrueAnswer <2 || newFalseAnswer <2 ? <button disabled id="submitNewQuizBtn">Submit new quiz</button> : <button id="submitNewQuizBtn">Submit new quiz</button>}
+      {/* <button id="submitNewQuizBtn">Submit new quiz</button> */}
     </form>
   )
 }

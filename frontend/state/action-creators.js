@@ -67,6 +67,7 @@ export function postAnswer(quiz) {
   return function (dispatch) {
     axios.post(`http://localhost:9000/api/quiz/answer`, { "quiz_id": quiz.currentQuiz.quiz_id, "answer_id": quiz.selected})
       .then(res => {
+        console.log(res)
         dispatch (setMessage(res.data.message))
       })
       .catch(err => {
@@ -85,6 +86,7 @@ export function postQuiz(inputs) {
       
       .then(res => {
         console.log(res)
+        dispatch(setMessage(`Congrats: "${res.data.question}" is a great question!`))
       })
       .catch(err => {
         console.log(err)
