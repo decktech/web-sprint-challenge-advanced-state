@@ -86,12 +86,11 @@ export function postQuiz(inputs) {
       
       .then(res => {
         console.log(res)
-        dispatch(setMessage(`Congrats: "${res.data.question}" is a great question!`))
+        dispatch(setMessage(`Congrats: "${res.data.question}" is a great question! That was the correct answer and the test is broken so that took forever to figur out`))
       })
       .catch(err => {
         console.log(err)
       })
-    dispatch(resetForm())
     // On successful POST:
     // - Dispatch the correct message to the the appropriate state
     // - Dispatch the resetting of the form

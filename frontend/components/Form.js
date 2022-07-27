@@ -7,7 +7,7 @@ import axios from 'axios'
 function Form(props) {
 
   const { newQuestion, newTrueAnswer, newFalseAnswer } = props
-  console.log(props)
+  // console.log(props)
   const onChange = evt => {
     props.inputChange(evt.target)
   }
